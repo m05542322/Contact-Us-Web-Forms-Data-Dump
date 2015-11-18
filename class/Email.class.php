@@ -10,6 +10,8 @@ class Email{
 
     private $smtpInfo;
 
+    private $attachments_array;
+
     function __construct ($action, $recipient_array) {
         //decide email type
         $this->setAction($action);
@@ -48,6 +50,13 @@ class Email{
         $this->recipient_array = $recipient_array;
     }
 
+    public function getAttachments() {
+        return $this->recipient_array;
+    }
+    public function setAttachments($attachments_array) {
+        $this->attachments_array = $attachments_array;
+    }
+
     function setSmtpInfo ($smtpInfo) {
         $this->smtpInfo = $smtpInfo;
     }
@@ -71,6 +80,7 @@ class Email{
         //mail content
         $subject = $this->getSubjectFromAction();
         $html = $this->getContent();
+        $attachments = $this->getAttachments();
 
         $headers = array(
             "From" => "System@rosewill.com",
@@ -88,6 +98,9 @@ class Email{
         $mime->addHTMLimage('images/rosewilllogo.png', 'image/png');
         $mime->setHTMLBody($html);
         /*need modify to class*/
+        foreach($attachments as $fileName => $fileType){
+            $mime->addAttachment($fileName, $fileType);
+        }
 //        $mime->addAttachment('All.xls', 'application/vnd.ms-excel');
 //        $mime->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
 //        $mime->addAttachment('Other.xls', 'application/vnd.ms-excel');

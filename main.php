@@ -4,10 +4,10 @@ require_once 'PHPExcel/Classes/PHPExcel.php';
 require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
 
-$FileList = array("All", "Tech_Support", "Other");
+$fileList = array("All", "Tech_Support", "Other");
 
 $arrayToExcel = array();
-foreach ($FileList as $file){
+foreach ($fileList as $file){
   $handle = fopen($file.'.txt', "r");
   if ($handle) {
       while (($line = fgets($handle)) !== false) {
@@ -36,4 +36,4 @@ foreach ($FileList as $file){
   ));
 }
 
-sendMailWithDownloadUrl('Contact-Us-Web-Form-Data', $FileList);
+sendMailWithDownloadUrl('Contact-Us-Web-Form-Data', $fileList);

@@ -84,7 +84,7 @@ function exportArrayToXlsx ($exportArray, $exportParam) {
     echo json_encode(array('message' => 'success'));
 }
 
-function sendMailWithDownloadUrl ($action, $url) {
+function sendMailWithDownloadUrl ($action, $fileList) {
     global $debug;
 
     if ($debug) {
@@ -109,19 +109,25 @@ function sendMailWithDownloadUrl ($action, $url) {
         "auth" => false);
     $emailFactory = EmailFactory::getEmailFactory($smtpInfo);
 
+    $attachments = array();
+    foreach($fileList as $each){
+        $excelFileType =  'application/vnd.ms-excel';
+        $fileName = $each . '.xls';
+        $attachments[$fileName] = $excelFileType;
+    }
+    var_dump($attachments);
+    die();
     /* $email = class Email */
     $email = $emailFactory->getEmail($action, $recipient_array);
-    $content = templateReplace($action, $url);
+    $content = templateReplace($action);
     $email->setContent($content);
-    $email->addAttachment('All.xls', 'application/vnd.ms-excel');
-    $email->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
-    $email->addAttachment('Other.xls', 'application/vnd.ms-excel');
+    $email->setAttachments($attachments);
     $email->sendMail();
 
     return true;
 }
 
-function templateReplace ($action, $urls) {
+function templateReplace ($action) {
     require_once 'PHPExcel/Classes/PHPExcel.php';
     $content = file_get_contents('email/content/template.html');
     $doc = phpQuery::newDocumentHTML($content);
@@ -133,14 +139,6 @@ function templateReplace ($action, $urls) {
 
     $emailContent = array();
     $description = 'Hi All:  Data as attachments';
-//    if(is_array($urls)){
-//        foreach ($urls as $url){
-//            $description .= '<a href="http://www.rosewill.com/media/report/' . $url . '.xls">' . $url . '</a><br />';
-//        }
-//    }
-//    else{
-//        $description = '<a href="http://www.rosewill.com/media/report/' . $urls . '.xls">' . $urls . '</a><br />';
-//    }
     $doc['.description'] = $description;
     $doc['.logoImage']->attr('src', 'images/rosewilllogo.png');
     return $doc;
