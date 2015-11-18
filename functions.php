@@ -115,8 +115,8 @@ function sendMailWithDownloadUrl ($action, $fileList) {
         $fileName = $each . '.xls';
         $attachments[$fileName] = $excelFileType;
     }
-    var_dump($attachments);
-    die();
+    //var_dump($attachments);
+    //die();
     /* $email = class Email */
     $email = $emailFactory->getEmail($action, $recipient_array);
     $content = templateReplace($action);
