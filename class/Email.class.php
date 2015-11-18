@@ -51,7 +51,7 @@ class Email{
     }
 
     public function getAttachments() {
-        return $this->recipient_array;
+        return $this->attachments_array;
     }
     public function setAttachments($attachments_array) {
         $this->attachments_array = $attachments_array;
@@ -81,6 +81,7 @@ class Email{
         $subject = $this->getSubjectFromAction();
         $html = $this->getContent();
         $attachments = $this->getAttachments();
+        //var_dump($attachments);
 
         $headers = array(
             "From" => "System@rosewill.com",
