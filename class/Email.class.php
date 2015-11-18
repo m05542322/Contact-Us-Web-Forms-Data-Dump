@@ -88,9 +88,9 @@ class Email{
         $mime->addHTMLimage('images/rosewilllogo.png', 'image/png');
         $mime->setHTMLBody($html);
         /*need modify to class*/
-        $mime->addAttachment('All.xls', 'application/vnd.ms-excel');
-        $mime->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
-        $mime->addAttachment('Other.xls', 'application/vnd.ms-excel');
+//        $mime->addAttachment('All.xls', 'application/vnd.ms-excel');
+//        $mime->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
+//        $mime->addAttachment('Other.xls', 'application/vnd.ms-excel');
         $body = $mime->get();
         $headers = $mime->headers($headers);
 

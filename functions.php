@@ -113,6 +113,9 @@ function sendMailWithDownloadUrl ($action, $url) {
     $email = $emailFactory->getEmail($action, $recipient_array);
     $content = templateReplace($action, $url);
     $email->setContent($content);
+    $email->addAttachment('All.xls', 'application/vnd.ms-excel');
+    $email->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
+    $email->addAttachment('Other.xls', 'application/vnd.ms-excel');
     $email->sendMail();
 
     return true;

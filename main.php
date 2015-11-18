@@ -36,4 +36,4 @@ foreach ($FileList as $file){
   ));
 }
 
-sendMailWithDownloadUrl('Support', $FileList);
+sendMailWithDownloadUrl('Contact-Us-Web-Form-Data', $FileList);
