@@ -4,11 +4,18 @@ require_once 'PHPExcel/Classes/PHPExcel.php';
 require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
 
+$now = date('Y-m-d');
 $fileList = array("All", "Tech_Support", "Other");
+$fileListWithDate = array();
+
+foreach($fileList as $file){
+    $file = $file . '_' . $now;
+    $fileListWithDate[] = $file;
+}
 
 $arrayToExcel = array();
 $result = array();
-foreach ($fileList as $file){
+foreach ($fileListWithDate as $file){
     $result = null;
     $arrayToExcel = null;
     $handle = fopen($file.'.txt', "r");
@@ -39,4 +46,4 @@ foreach ($fileList as $file){
     ));
 }
 
-sendMailWithDownloadUrl('Contact-Us-Web-Form-Data', $fileList);
+sendMailWithDownloadUrl('Contact-Us-Web-Form-Data', $fileListWithDate);
