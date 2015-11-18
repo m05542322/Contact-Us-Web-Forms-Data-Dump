@@ -87,7 +87,10 @@ class Email{
         $mime = new Mail_mime($crlf);
         $mime->addHTMLimage('images/rosewilllogo.png', 'image/png');
         $mime->setHTMLBody($html);
+        /*need modify to class*/
         $mime->addAttachment('Other.xls', 'application/vnd.ms-excel');
+        $mime->addAttachment('Product.xls', 'application/vnd.ms-excel');
+        $mime->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
         $body = $mime->get();
         $headers = $mime->headers($headers);
 
