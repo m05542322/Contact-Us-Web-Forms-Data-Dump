@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Asia/Taipei');
+date_default_timezone_set('America/Los_Angeles');
 require_once 'PHPExcel/Classes/PHPExcel.php';
 require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
