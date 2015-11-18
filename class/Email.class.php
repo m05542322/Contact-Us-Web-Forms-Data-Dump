@@ -88,6 +88,7 @@ class Email{
         $mime->addHTMLimage('images/rosewilllogo.png', 'image/png');
         $mime->setHTMLBody($html);
         $body = $mime->get();
+        $mime->addAttachment('images/rosewilllogo.png');
         $headers = $mime->headers($headers);
 
 
