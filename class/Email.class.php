@@ -102,9 +102,6 @@ class Email{
         foreach($attachments as $fileName => $fileType){
             $mime->addAttachment($fileName, $fileType);
         }
-//        $mime->addAttachment('All.xls', 'application/vnd.ms-excel');
-//        $mime->addAttachment('Tech_Support.xls', 'application/vnd.ms-excel');
-//        $mime->addAttachment('Other.xls', 'application/vnd.ms-excel');
         $body = $mime->get();
         $headers = $mime->headers($headers);
 

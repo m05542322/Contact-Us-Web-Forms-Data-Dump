@@ -111,12 +111,10 @@ function sendMailWithDownloadUrl ($action, $fileList) {
 
     $attachments = array();
     foreach($fileList as $each){
-        $excelFileType =  'application/vnd.ms-excel';
         $fileName = $each . '.xls';
+        $excelFileType =  'application/vnd.ms-excel';
         $attachments[$fileName] = $excelFileType;
     }
-    //var_dump($attachments);
-    //die();
     /* $email = class Email */
     $email = $emailFactory->getEmail($action, $recipient_array);
     $content = templateReplace($action);
@@ -138,7 +136,7 @@ function templateReplace ($action) {
     (isset($contentTitle[$action])) ? $doc['.descriptionTitle'] = $contentTitle[$action] : $doc['.descriptionTitle'] = $action;
 
     $emailContent = array();
-    $description = 'Hi All:  Data as attachments';
+    $description = "Hi All:" . "<div>Data as attachments</div>";
     $doc['.description'] = $description;
     $doc['.logoImage']->attr('src', 'images/rosewilllogo.png');
     return $doc;
