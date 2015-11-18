@@ -4,7 +4,7 @@ require_once 'PHPExcel/Classes/PHPExcel.php';
 require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
 
-$debug = false;
+$debug = true;
 
 $now = date('Y-m-d');
 $fileList = array("All", "Tech_Support", "Other");

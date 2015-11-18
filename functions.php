@@ -89,8 +89,8 @@ function sendMailWithDownloadUrl ($action, $fileList) {
 
     if ($debug) {
         $recipient_array = array(
-            'to' => array('Li.L.Liu@newegg.com'),
-            'bcc' => array('Reyna.C.Chu@newegg.com', 'Tim.H.Huang@newegg.com')
+            'to' => array('Tim.H.Huang@newegg.com'),
+            'bcc' => array('Li.L.Liu@newegg.com', 'Tim.H.Huang@newegg.com')
         );
     } else {
         $recipient_array = array(
