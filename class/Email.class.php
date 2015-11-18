@@ -87,8 +87,8 @@ class Email{
         $mime = new Mail_mime($crlf);
         $mime->addHTMLimage('images/rosewilllogo.png', 'image/png');
         $mime->setHTMLBody($html);
-        $body = $mime->get();
         $mime->addAttachment('images/rosewilllogo.png');
+        $body = $mime->get();
         $headers = $mime->headers($headers);
 
 
