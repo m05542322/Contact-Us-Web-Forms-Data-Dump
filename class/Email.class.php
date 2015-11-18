@@ -80,7 +80,9 @@ class Email{
         //mail content
         $subject = $this->getSubjectFromAction();
         $html = $this->getContent();
-        $attachments = $this->getAttachments();
+        if(isset($this->attachments_array)){
+            $attachments = $this->getAttachments();
+        }
         //var_dump($attachments);
 
         $headers = array(
