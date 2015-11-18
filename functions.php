@@ -118,7 +118,7 @@ function sendMailWithDownloadUrl ($action, $url) {
     return true;
 }
 
-function templateReplace ($action, $url) {
+function templateReplace ($action, $urls) {
     require_once 'PHPExcel/Classes/PHPExcel.php';
     $content = file_get_contents('email/content/template.html');
     $doc = phpQuery::newDocumentHTML($content);
@@ -129,9 +129,16 @@ function templateReplace ($action, $url) {
     (isset($contentTitle[$action])) ? $doc['.descriptionTitle'] = $contentTitle[$action] : $doc['.descriptionTitle'] = $action;
 
     $emailContent = array();
-    $doc['.description'] = 'All: ' . '<a href="http://www.rosewill.com/media/report/' . $url[0] . '.xls">' . $url[0] . '</a><br />
-                                     Tech Support: ' . '<a href="http://www.rosewill.com/media/report/' . $url[1] . '.xls">' . $url[1] . '</a><br />
-                                     Others: ' . '<a href="http://www.rosewill.com/media/report/' . $url[2] . '.xls">' . $url[2] . '</a>';
+    $description = '';
+    if(is_array($urls)){
+        foreach ($urls as $url){
+            $description .= '<a href="http://www.rosewill.com/media/report/' . $url . '.xls">' . $url . '</a><br />';
+        }
+    }
+    else{
+        $description = '<a href="http://www.rosewill.com/media/report/' . $urls . '.xls">' . $urls . '</a><br />';
+    }
+    $doc['.description'] = $description;
     $doc['.logoImage']->attr('src', 'images/rosewilllogo.png');
     return $doc;
 }
