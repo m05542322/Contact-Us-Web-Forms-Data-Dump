@@ -129,15 +129,15 @@ function templateReplace ($action, $urls) {
     (isset($contentTitle[$action])) ? $doc['.descriptionTitle'] = $contentTitle[$action] : $doc['.descriptionTitle'] = $action;
 
     $emailContent = array();
-    $description = '';
-    if(is_array($urls)){
-        foreach ($urls as $url){
-            $description .= '<a href="http://www.rosewill.com/media/report/' . $url . '.xls">' . $url . '</a><br />';
-        }
-    }
-    else{
-        $description = '<a href="http://www.rosewill.com/media/report/' . $urls . '.xls">' . $urls . '</a><br />';
-    }
+    $description = 'Hi All:  Data as attachments';
+//    if(is_array($urls)){
+//        foreach ($urls as $url){
+//            $description .= '<a href="http://www.rosewill.com/media/report/' . $url . '.xls">' . $url . '</a><br />';
+//        }
+//    }
+//    else{
+//        $description = '<a href="http://www.rosewill.com/media/report/' . $urls . '.xls">' . $urls . '</a><br />';
+//    }
     $doc['.description'] = $description;
     $doc['.logoImage']->attr('src', 'images/rosewilllogo.png');
     return $doc;

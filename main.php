@@ -4,7 +4,7 @@ require_once 'PHPExcel/Classes/PHPExcel.php';
 require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
 
-$FileList = array("Product", "Tech_Support", "Other");
+$FileList = array("All", "Tech_Support", "Other");
 
 $arrayToExcel = array();
 foreach ($FileList as $file){
