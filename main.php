@@ -4,7 +4,7 @@ require_once 'PHPExcel/Classes/PHPExcel.php';
 require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
 
-$debug = true;
+$debug = false;
 
 $now = date('Y-m-d');
 $fileList = array("All", "Tech_Support", "Other");
@@ -48,4 +48,4 @@ foreach ($fileListWithDate as $file){
     ));
 }
 
-sendMailWithDownloadUrl('Contact-Us-Web-Form-Data', $fileListWithDate);
+sendMailWithDownloadUrl('Contact Us Web Form Data', $fileListWithDate);
