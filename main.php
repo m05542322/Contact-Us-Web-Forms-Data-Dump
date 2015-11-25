@@ -5,7 +5,7 @@ require_once 'phpQuery/phpQuery/phpQuery.php';
 require_once 'functions.php';
 require_once('DB/db.php');
 
-$debug = true;
+$debug = false;
 
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die('Error with MySQL connection');
 mysql_query("SET NAMES 'utf8'");
