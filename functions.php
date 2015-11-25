@@ -87,6 +87,9 @@ function exportArrayToXlsx ($exportArray, $exportParam) {
 function sendMailWithDownloadUrl ($action, $fileList) {
     global $debug;
 
+    var_dump($fileList);
+    die();
+
     if ($debug) {
         $recipient_array = array(
             'to' => array('Tim.H.Huang@newegg.com'),
