@@ -38,7 +38,7 @@ $fileDir = 'Data/';
 $now = date('Y-m-d');
 $fileListWithDate = array();
 foreach($fileList as $file){
-    $file = $fileDir . $file . '_' . $now;
+    $file = $fileDir . $file . '_' . $now . 'xls';
     $fileListWithDate[] = $file;
 }
 
@@ -64,7 +64,7 @@ foreach ($sqlArray as $each) {
         $arrayToExcel[] = $dataForExcel;
     }
     exportArrayToXlsx($arrayToExcel, array(
-        "filename" => $fileListWithDate[$i].'.xls',
+        "filename" => $fileListWithDate[$i],
         "title" => "Sheet 1"
     ));
     $i++;

@@ -113,7 +113,7 @@ function sendMailWithDownloadUrl ($action, $fileList) {
 
     $attachments = array();
     foreach($fileList as $each){
-        $fileName = $each . '.xls';
+        $fileName = $each;
         $excelFileType =  'application/vnd.ms-excel';
         $attachments[$fileName] = $excelFileType;
     }
