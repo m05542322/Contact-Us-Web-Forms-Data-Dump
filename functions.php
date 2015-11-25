@@ -94,7 +94,7 @@ function sendMailWithDownloadUrl ($action, $fileList) {
         );
     } else {
         $recipient_array = array(
-            'to' => array('Stephanie.Y.Chang@rosewill.com', 'Shirley.Q.Pi@newegg.com'),
+            'to' => array('Stephanie.Y.Chang@rosewill.com'),
             'bcc' => array('Li.L.Liu@newegg.com', 'Tim.H.Huang@newegg.com')
         );
     }
