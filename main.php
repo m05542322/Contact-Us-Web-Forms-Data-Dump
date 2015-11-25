@@ -38,7 +38,7 @@ $fileDir = 'Data/';
 $now = date('Y-m-d');
 $fileListWithDate = array();
 foreach($fileList as $file){
-    $file = $fileDir . $file . '_' . $now . 'xls';
+    $file = $fileDir . $file . '_' . $now . '.xls';
     $fileListWithDate[] = $file;
 }
 
