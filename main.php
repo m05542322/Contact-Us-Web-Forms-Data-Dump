@@ -12,29 +12,19 @@ mysql_query("SET NAMES 'utf8'");
 mysql_select_db($dbname);
 
 /*sql scripts*/
-$sql_i_reviewed_rosewill = "SELECT form_name, ctime, value FROM `custom_form` WHERE `form_name` like \'%i-reviewed-rosewill%'";
-$sql_media_contact = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Media Contact\"%' ";
-$sql_request_to_return_merchandise = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Request to Return Merchandise\"%' ";
-$sql_request_to_review_product = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Request to Review Product\"%' ";
-$sql_sponsorship_request = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Sponsorship Request\"%' ";
-$sql_tech_support = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Tech Support\"%'";
-$sql_vendor_or_business_contact = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Vendor or Business Contact\"%' ";
-$sql_other = "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Other\"%' ";
-
 $sqlArray = array(
-    $sql_i_reviewed_rosewill,
-    $sql_media_contact,
-    $sql_request_to_return_merchandise,
-    $sql_request_to_review_product,
-    $sql_sponsorship_request,
-    $sql_tech_support,
-    $sql_vendor_or_business_contact,
-    $sql_other
+    'i_reviewed_rosewill' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `form_name` like '%i-reviewed-rosewill%'",
+    'media_contact' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Media Contact\"%'",
+    'request_to_return_merchandise' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Request to Return Merchandise\"%'",
+    'request_to_review_product' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Request to Review Product\"%'",
+    'sponsorship_request' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Sponsorship Request\"%'",
+    'tech_support' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Tech Support\"%'",
+    'vendor_or_business_contact' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Vendor or Business Contact\"%'",
+    'other' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Other\"%' "
 );
 
-$now = date('Y-m-d');
 $fileList = array(
-    "Reviewed_Rosewill",
+    "I_Reviewed_Rosewill",
     "Media_Contact",
     "Request_to_Return_Merchandise",
     "Request_to_Review_Product",
@@ -44,6 +34,8 @@ $fileList = array(
     "Other");
 
 $fileDir = 'Data/';
+
+$now = date('Y-m-d');
 $fileListWithDate = array();
 foreach($fileList as $file){
     $file = $fileDir . $file . '_' . $now;
@@ -59,7 +51,6 @@ foreach ($sqlArray as $each) {
     $result = mysql_query($each) or die('MySQL query error');
     while ($row = mysql_fetch_array($result)) {
         /*$row['form_name'], $row['ctime'], $row['value']*/
-        $row['value'] =
         $row['value'] = preg_replace('/\\\\\\\"/', ' ', $row['value']);
         $row['value'] = preg_replace('/","/', "\n", $row['value']);
         $row['value'] = preg_replace('/[{}"]/', '', $row['value']);
