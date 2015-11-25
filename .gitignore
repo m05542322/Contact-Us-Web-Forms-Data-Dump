@@ -46,3 +46,4 @@ Temporary Items
 *.xls
 .idea/
 Data/
+getData.sh

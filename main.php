@@ -7,13 +7,26 @@ require_once 'functions.php';
 $debug = false;
 
 $now = date('Y-m-d');
-$fileList = array("All", "Tech_Support", "Other");
+$fileList = array(
+    "Reviewed_Rosewill",
+    "Media_Contact",
+    "Request_to_Return_Merchandise",
+    "Request_to_Review_Product",
+    "Sponsorship_Request",
+    "Tech_Support",
+    "Vendor_or_Business_Contact",
+    "Other");
+
+$fileDir = 'Data/';
+
 $fileListWithDate = array();
 
 foreach($fileList as $file){
-    $file = $file . '_' . $now;
+    $file = $fileDir . $file . '_' . $now;
     $fileListWithDate[] = $file;
 }
+
+
 
 $arrayToExcel = array();
 $result = array();
