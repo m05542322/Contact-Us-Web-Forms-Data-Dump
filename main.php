@@ -13,6 +13,7 @@ mysql_select_db($dbname);
 
 /*sql scripts*/
 $sqlArray = array(
+    'product_registration' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `form_name` like '%productRegistration%'",
     'i_reviewed_rosewill' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `form_name` like '%i-reviewed-rosewill%'",
     'media_contact' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Media Contact\"%'",
     'request_to_return_merchandise' => "SELECT form_name, ctime, value FROM `custom_form` WHERE `value` like '%\"Purpose for Contact\":\"Request to Return Merchandise\"%'",
@@ -24,6 +25,7 @@ $sqlArray = array(
 );
 
 $fileList = array(
+    "Product_Registration",
     "I_Reviewed_Rosewill",
     "Media_Contact",
     "Request_to_Return_Merchandise",
